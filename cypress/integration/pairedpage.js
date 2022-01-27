@@ -1,26 +1,28 @@
 describe('Board Game Bartender Paired Page DOM', () => {
-    beforeEach(() => {
-        cy.visit('http://localhost:3000/b7EIdXzESo/13194')  
-        
-    })
-
     it('should have a Header component', () => {
+        cy.visit('http://localhost:3000/#/b7EIdXzESo/13194')  
+
         cy.get('[data-cy=header')
             .should('exist')
     })
 
     it('should have show the words Your Perfect Pairing at the top of the page', () => {
+        cy.visit('http://localhost:3000/#/b7EIdXzESo/13194')  
+
         cy.get('h2')
-        .contains('Your Perfect Pairing!')
+            .contains('Your Perfect Pairing!')
     })
 
     it('should show the add to favorites button', () => {
+        cy.visit('http://localhost:3000/#/b7EIdXzESo/13194')  
+
         cy.get('[data-cy=favorites-button]')
     })
 
     it('should allow the user to refresh the page and see the same information as before', () => {
-        cy.reload()
-            .wait(2000)
+        cy.visit('http://localhost:3000/#/b7EIdXzESo/13194')  
+
+        cy.reload().wait(2000)
 
         .get('[data-cy=game-name]')
         .contains('Starfarers of Catan')
@@ -41,7 +43,7 @@ describe('Board Game Bartender Paired Page DOM', () => {
           .get('[data-cy=pairing-form] [data-cy=pair-button]')
           .click()
           
-          .wait(1000)
+          .wait(2000)
           
           .get('[data-cy=game-name]')
           .contains('Catan')
@@ -51,8 +53,7 @@ describe('Board Game Bartender Paired Page DOM', () => {
     })
 
     it('should allow the user to visit a specific URL and see data based on the URL path', () => {
-        cy.visit('http://localhost:3000/RCDJAQKpLn/11013')
-            .wait(4000)
+        cy.visit('http://localhost:3000/#/RCDJAQKpLn/11013').wait(2000)
             
         .get('[data-cy=game-name]')
         .contains('Catan: 3D Edition')
@@ -63,8 +64,7 @@ describe('Board Game Bartender Paired Page DOM', () => {
     
 
     it('should allow the user to use the back and forward buttons and retain the same info', () => {
-        cy.visit('http://localhost:3000/qiJzLWCvPB/178322')
-            .wait(2000)
+        cy.visit('http://localhost:3000/#/qiJzLWCvPB/178322').wait(2000)
 
         .get('[data-cy=game-name]')
         .contains('Catan: Explorers & Pirates')
@@ -75,7 +75,6 @@ describe('Board Game Bartender Paired Page DOM', () => {
         .visit('http://localhost:3000/')
 
         .go('back')
-            .wait(2000)
 
         .get('[data-cy=game-name]')
         .contains('Catan: Explorers & Pirates')
