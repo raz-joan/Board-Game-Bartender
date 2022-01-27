@@ -23,6 +23,8 @@ const PairedPage = () => {
     const clearInputs = () => {
         dispatch(setLiquorType(''))
         dispatch(setGameName(''))
+        dispatch(findGame(''))
+        dispatch(storeCurrentDrink(''))
     }
 
     useEffect(() => {
